@@ -38,7 +38,7 @@ class PowOperation extends Operation
         list($result, $resulView) = $this->mathOperation($base, $exp);
 
         $operationHistory = $this->getOperationHistory(' ^ ', $resulView);
-        $this->getOutput($operationHistory, $result);
+        $output->writeln($this->getOutput($operationHistory, $result));
     }
 
     public function mathOperation($base, $exponent)
