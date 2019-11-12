@@ -13,7 +13,7 @@ class AddOperation extends Operation
         $this->setName('add')
             ->setDescription('Add all given Numbers')
             ->setHelp('Add <numbers>...')
-            ->addArgument('numbers', InputArgument::IS_ARRAY, 'add all given Numbers');
+            ->addArgument('numbers', InputArgument::IS_ARRAY, 'The Numbers to be added');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
