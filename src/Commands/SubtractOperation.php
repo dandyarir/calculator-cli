@@ -19,7 +19,7 @@ class SubtractOperation extends Operation
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->addNumbers($input, $output);
+        $this->subtractNumbers($input, $output);
     }
 
     /**
@@ -27,7 +27,7 @@ class SubtractOperation extends Operation
      * @param OutputInterface $output
      * @return mixed
      */
-    public function addNumbers(InputInterface $numbers, OutputInterface $output)
+    public function subtractNumbers(InputInterface $numbers, OutputInterface $output)
     {
         $numbers = $numbers->getArguments()['numbers'];
 
