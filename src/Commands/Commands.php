@@ -3,6 +3,7 @@ namespace Calculator;
 
 
 use Jakmall\Recruitment\Calculator\Commands\AddOperation;
+use Jakmall\Recruitment\Calculator\Commands\DivideOperation;
 use Jakmall\Recruitment\Calculator\Commands\MultiplyOperation;
 use Jakmall\Recruitment\Calculator\Commands\SubtractOperation;
 
@@ -13,7 +14,8 @@ class Commands
         return [
             new AddOperation(),
             new SubtractOperation(),
-            new MultiplyOperation()
+            new MultiplyOperation(),
+            new DivideOperation()
         ];
     }
 }
