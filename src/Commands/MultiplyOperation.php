@@ -37,8 +37,7 @@ class MultiplyOperation extends Operation
 
         $operationHistory = $this->getOperationHistory(' * ', $resultView);
 
-        $this->getOutput($operationHistory, $result);
-
+        $output->writeln($this->getOutput($operationHistory, $result));
     }
 
     private function mathOperation(array $numbers)
