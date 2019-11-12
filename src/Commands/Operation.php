@@ -8,6 +8,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Operation extends SymfonyCommand
 {
+    protected $logs = '_history.csv';
+
     public function __construct()
     {
         parent::__construct();
@@ -32,5 +34,44 @@ class Operation extends SymfonyCommand
     public function getOutput($message, $result)
     {
         return $message.' = '.$result;
+    }
+
+    public function generateHistory(array $logArrays)
+    {
+        $logs = fopen($this->logs, (file_exists($this->logs) ? 'a' : 'w'));
+        fputcsv($logs, $logArrays);
+        fclose($logs);
+    }
+
+    public function createHistoryParams($name, $operationView, $result, $operationWithResult, $date)
+    {
+        return [
+            'Command'       => $name,
+            'Description'   => $operationView,
+            'Result'        => $result,
+            'output'        => $operationWithResult,
+            'time'          => $date
+        ];
+    }
+
+    public function closingProcess(
+        $operationName,
+        $date,
+        $operationHistory,
+        $result,
+        $resultView,
+        OutputInterface $output)
+    {
+        $historyParams = $this->createHistoryParams(
+            $operationName,
+            $operationHistory,
+            $result,
+            $resultView,
+            $date
+        );
+
+        $this->generateHistory($historyParams);
+
+        return $output->writeln($resultView);
     }
 }
