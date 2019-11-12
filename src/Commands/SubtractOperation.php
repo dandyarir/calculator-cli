@@ -7,14 +7,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 
-class AddOperation extends Operation
+class SubtractOperation extends Operation
 {
     public function configure()
     {
-        $this->setName('add')
-            ->setDescription('Add all given Numbers')
+        $this->setName('subtract')
+            ->setDescription('subtract all given Numbers')
             ->setHelp('Add <numbers>...')
-            ->addArgument('numbers', InputArgument::IS_ARRAY, 'add all given Numbers');
+            ->addArgument('numbers', InputArgument::IS_ARRAY, 'subtract all given Numbers');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -43,10 +43,10 @@ class AddOperation extends Operation
 
     private function mathOperation(array $numbers)
     {
-        $result = 0;
-        $resultView = [];
+        $result = $numbers[0];
+        $resultView = [$result];
         foreach ($numbers as $number) {
-            $result += $number;
+            $result -= $number;
             array_push($resultView, $number);
         }
 
