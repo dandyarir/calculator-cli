@@ -31,8 +31,11 @@ class DivideOperation extends Operation
     {
         $numbers = $numbers->getArguments()['numbers'];
 
-        $this->manualArgumentsValidation($numbers, $output);
-
+        $validation = $this->manualArgumentsValidation($numbers);
+        if ($validation) {
+            $output->write($validation);
+            return false;
+        }
         list($result, $resultView) = $this->mathOperation($numbers, $output);
 
         if ($result == null) return false; //if there is found zero as divisor

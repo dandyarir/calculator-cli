@@ -15,15 +15,25 @@ class Operation extends SymfonyCommand
         parent::__construct();
     }
 
+    public function isZeroArgument(array $numbers)
+    {
+        return count($numbers) == 0;
+    }
+
     public function isOnlyOneArgument(array $numbers)
     {
         return count($numbers) == 1;
     }
 
-    protected function manualArgumentsValidation(array $numbers, OutputInterface $output)
+    protected function manualArgumentsValidation(array $numbers)
     {
-        if($this->isOnlyOneArgument($numbers)) return $output->writeln($numbers);
-        return false;
+        if ($this->isZeroArgument($numbers)) {
+            return "Argument cant be empty";
+        } elseif ($this->isOnlyOneArgument($numbers)) {
+            return $numbers;
+        }
+
+        return null;
     }
 
     public function getOperationHistory($sign, array $arr)
