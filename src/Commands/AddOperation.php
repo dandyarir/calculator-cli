@@ -31,13 +31,23 @@ class AddOperation extends Operation
     {
         $numbers = $numbers->getArguments()['numbers'];
 
-        $this->manualArgumentsValidation($numbers, $output);
-
+        $validation = $this->manualArgumentsValidation($numbers);
+        if ($validation) {
+            $output->write($validation);
+            return false;
+        }
         list($result, $resultView) = $this->mathOperation($numbers);
 
         $operationHistory = $this->getOperationHistory(' + ', $resultView);
 
-        $output->writeln($this->getOutput($operationHistory, $result));
+        $this->closingProcess(
+            $this->getName(),
+            date('Y-m-d H:i:s'),
+            $operationHistory,
+            $result,
+            $this->getOutput($operationHistory, $result),
+            $output
+        );
     }
 
     private function mathOperation(array $numbers)
