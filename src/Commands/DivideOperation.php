@@ -35,10 +35,18 @@ class DivideOperation extends Operation
 
         list($result, $resultView) = $this->mathOperation($numbers, $output);
 
-        if ($result == null) return false;
+        if ($result == null) return false; //if there is found zero as divisor
+
         $operationHistory = $this->getOperationHistory(' / ', $resultView);
 
-        $output->writeln($this->getOutput($operationHistory, $result));
+        $this->closingProcess(
+            $this->getName(),
+            date('Y-m-d H:i:s'),
+            $operationHistory,
+            $result,
+            $this->getOutput($operationHistory, $result),
+            $output
+        );
     }
 
     private function mathOperation(array $numbers, OutputInterface $output)
