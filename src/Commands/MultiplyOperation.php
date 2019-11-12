@@ -7,14 +7,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 
-class SubtractOperation extends Operation
+class MultiplyOperation extends Operation
 {
     public function configure()
     {
         $this->setName('multiply')
             ->setDescription('Multiply all given Numbers')
             ->setHelp('Multiply <numbers>...')
-            ->addArgument('numbers', InputArgument::IS_ARRAY, 'multiply all given Numbers');
+            ->addArgument('numbers', InputArgument::IS_ARRAY, 'The numbers to be multiplied');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
