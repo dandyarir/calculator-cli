@@ -14,7 +14,7 @@ class SubtractOperation extends Operation
         $this->setName('subtract')
             ->setDescription('subtract all given Numbers')
             ->setHelp('Subtract <numbers>...')
-            ->addArgument('numbers', InputArgument::IS_ARRAY, 'subtract all given Numbers');
+            ->addArgument('numbers', InputArgument::IS_ARRAY, 'The numbers to be subtracted');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
