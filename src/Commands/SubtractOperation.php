@@ -35,7 +35,7 @@ class SubtractOperation extends Operation
 
         list($result, $resultView) = $this->mathOperation($numbers);
 
-        $operationHistory = $this->getOperationHistory(' + ', $resultView);
+        $operationHistory = $this->getOperationHistory(' - ', $resultView);
 
         $this->getOutput($operationHistory, $result);
 
