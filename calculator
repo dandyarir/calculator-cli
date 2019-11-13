@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-docker run -it --rm --name calculator -v "$PWD":/calculator -w $PWD php:7.3-cli-alpine php app ${@}
+docker run --interactive --rm --name calculator \
+ --volume "/${PWD}":/calculator \
+ -w "/$PWD" \
+ php:7.3-cli-alpine \
+ php app
